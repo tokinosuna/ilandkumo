@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - i LAND kumo</title>
+    <style>
+        /* CSS Reset and Basic Setup (Copied from index.html for consistency) */
+        :root {
+            --bg-main: #F4F1EC;
+            --bg-footer: #70757A;
+            --text-dark: #333333;
+            --text-light: #F4F1EC;
+            --accent-pink: #E76085;
+            --accent-green: #319B74;
+            --accent-blue: #3E8AD1;
+            --accent-orange: #F2A33A;
+            --accent-purple: #8C65B3;
+            --accent-brown: #C9A98D;
+            --accent-grey: #A9AEB1;
+
+            --font-sans: 'Inter', 'Helvetica', 'Arial', sans-serif;
+            --font-serif: 'Noto Serif JP', 'Georgia', serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* --- Header --- (Copied from index.html) */
+        .main-header {
+            padding: 20px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 400;
+            letter-spacing: -2px;
+        }
+        .main-nav { display: none; }
+        .nav-link { font-weight: 500; }
+        .menu-toggle {
+            background: none;
+            border: 1px solid var(--text-dark);
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            cursor: pointer;
+        }
+        .menu-toggle svg { width: 20px; height: 20px; }
+
+        /* --- Main Content Area for Volunteer Page --- */
+        .volunteer-page-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .volunteer-page-section h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .volunteer-page-section h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+        .page-subtitle {
+            font-weight: 500;
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+        .story-text {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            text-align: left;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .story-text strong {
+            color: var(--text-dark);
+        }
+
+        /* --- Roles Grid --- */
+        .roles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .role-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .role-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+        }
+        .role-card p {
+            margin-bottom: 10px;
+        }
+        .role-card strong {
+            color: var(--accent-green);
+        }
+        .benefits-list {
+            list-style: '✓ ';
+            padding-left: 20px;
+            text-align: left;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .benefits-list li {
+            margin-bottom: 10px;
+        }
+
+        /* --- CTA --- */
+        .cta-section {
+            background-color: #EAE6DF;
+            padding: 60px 0;
+            margin-top: 60px;
+            border-radius: 20px;
+        }
+        .email-cta a {
+            display: inline-block;
+            background-color: var(--text-dark);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+        .email-cta a:hover {
+            background-color: #555;
+        }
+
+        /* --- Footer --- (Copied from index.html) */
+        .main-footer {
+            background-color: var(--bg-footer);
+            color: var(--text-light);
+            padding: 60px 0;
+            font-size: 0.9rem;
+        }
+        .footer-content { display: flex; flex-direction: column; gap: 40px; }
+        .footer-top { display: flex; flex-direction: column; justify-content: space-between; gap: 30px; }
+        .footer-nav ul { display: flex; flex-direction: column; gap: 15px; }
+        .footer-logo-area { text-align: left; }
+        .footer-logo { font-size: 3rem; color: white; font-family: var(--font-serif); }
+        .footer-bottom { display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; }
+
+        @media (min-width: 768px) {
+            .main-nav { display: flex; gap: 25px; }
+            .roles-grid { grid-template-columns: 1fr 1fr; }
+            .footer-top, .footer-bottom { flex-direction: row; align-items: center; }
+            .footer-nav ul { flex-direction: row; gap: 30px; }
+            .footer-logo-area { text-align: right; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">i LAND kumo</a>
+            <nav class="main-nav">
+                <a href="index.html#manifesto" class="nav-link">Our Manifesto</a>
+                <a href="volunteer.html" class="nav-link" style="text-decoration: underline; text-underline-offset: 4px;">Volunteer</a>
+            </nav>
+            <button class="menu-toggle" aria-label="Open menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="volunteer-page-section">
+            <div class="container">
+                <h1>Become a Guardian of Our Sky</h1>
+                <p class="page-subtitle">Help Us Build i LAND kumo</p>
+
+                <div class="story-text">
+                    <h3>Why This Sanctuary Must Exist: A Personal Story</h3>
+                    <p>Have you ever gathered all your courage to reach out for help? You write the perfect email, you check it ten times, and you finally hit "send" to a local support group. They reply, "You're welcome anytime!" Your heart lifts. You feel seen.</p>
+                    <p>So you go. You travel to the address they gave you, your anxiety buzzing but pushed down by a flicker of hope. But when you arrive... there’s nothing. No sign, no welcome mat, just a confusing building with corporate offices and a loud dance club next door. You circle for half an hour. You send a message, "I'm here," but the message remains unread. The silence is deafening.</p>
+                    <p><strong>That empty feeling of being ignored after taking that huge, brave step? That pain is the very reason <code>i LAND kumo</code> was created.</strong></p>
+                    <p>Our promise is simple: This is not just another project. It's a commitment. Here, your courage will be met with kindness. Here, you will be heard. If you reach out, you will get a reply. We are the difference we wished for.</p>
+                </div>
+
+                <h2>We're Looking for Kind Souls To...</h2>
+                <div class="roles-grid">
+                    <div class="role-card">
+                        <h3>👨‍💻 Front-End Developer</h3>
+                        <p><strong>The situation:</strong> Our founder has about two years of experience and is great at turning ideas into reality (often with a little help from AI!). However, a single JavaScript problem can sometimes take a whole day to solve.</p>
+                        <p><strong>Who we're looking for:</strong> A collaborator with more front-end experience who can help build features more robustly, offer guidance, and enjoy problem-solving together.</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>🎨 UI/UX Designer</h3>
+                        <p><strong>The situation:</strong> We're currently using Miro and Figma to map out ideas and create mockups. We have a strong vision for a calm, minimal, and intuitive aesthetic.</p>
+                        <p><strong>Who we're looking for:</strong> A designer who loves creating beautiful, accessible, and emotionally resonant interfaces. If you believe design can be a form of care, you belong here.</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>✍️ Writer & Content Strategist</h3>
+                        <p><strong>The situation:</strong> We want to build a blog to share stories and build a community. We're exploring platforms like Substack, Medium, or a self-hosted solution.</p>
+                        <p><strong>Who we're looking for:</strong> Someone with a heart for storytelling. You can help shape our voice, write articles that resonate, and strategize how we connect with people through words.</p>
+                    </div>
+                    <div class="role-card">
+                        <h3>🔬 QA Tester & Feedback Giver</h3>
+                        <p><strong>The situation:</strong> The app is in its early stages.</p>
+                        <p><strong>Who we're looking for:</strong> The first residents of our island! We need people to use the app, find the cracks, and give honest feedback to make this a truly safe space.</p>
+                    </div>
+                </div>
+                
+                <div style="grid-column: 1 / -1; margin-top: 20px;" class="roles-grid">
+                     <div class="role-card">
+                        <h3>📣 Social Media & Community Advocate</h3>
+                        <p><strong>The situation:</strong> Our sanctuary is quiet, but our mission shouldn't be a secret.</p>
+                        <p><strong>Who we're looking for:</strong> If you believe in what we're doing and are good at sharing stories online, we need your help. You can help us reach other people who need a space like this.</p>
+                    </div>
+                </div>
+
+                <h2>What's In It For You?</h2>
+                <ul class="benefits-list">
+                    <li>Build your portfolio with a project that has a soul.</li>
+                    <li>Collaborate with a deeply passionate and empathetic founder.</li>
+                    <li>Make a tangible difference in creating a safe space on the internet.</li>
+                    <li>Gain experience in a community-driven, open-source environment.</li>
+                    <li>Have your voice and ideas genuinely valued and heard.</li>
+                </ul>
+
+                <div class="cta-section">
+                    <h2>Ready to Join Us?</h2>
+                    <p style="max-width: 600px; margin: 15px auto 30px;">If this story resonates with you, please send a short email. Tell us a little about yourself, which role(s) you're interested in, and why this mission speaks to you. A link to your portfolio or GitHub is wonderful, but a heartfelt message is even better.</p>
+                    <div class="email-cta">
+                        <a href="mailto:your.email@example.com">Send an Email to Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-top">
+                    <nav class="footer-nav">
+                        <ul>
+                            <li><a href="index.html#manifesto">The Why</a></li>
+                            <li><a href="index.html#demo">The Demo</a></li>
+                            <li><a href="volunteer.html">Volunteer</a></li>
+                            <li><a href="#">GitHub</a></li>
+                        </ul>
+                    </nav>
+                    <div class="footer-logo-area">
+                        <div class="footer-logo">i LAND kumo</div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <a href="#">Privacy First</a>
+                    <span>© 2025 i LAND kumo. All clouds are stored locally.</span>
+                    <a href="#">You're amazing just for being here.</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
